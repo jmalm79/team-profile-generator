@@ -1,5 +1,4 @@
-  const generateHTML = () => 
-  `
+
     <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -23,55 +22,40 @@
     <div class='row'>
     
     <div class="col-12 d-flex justify-content-center">
-    `
     
- const createManager = (manager) =>
-`
       <div class="card m-2 col-3">
         <div class="card-body">
-          <h5 class="card-title">${manager.name}
+          <h5 class="card-title">Manager Name
           <i class="fas fa-mug-hot"></i>Manager</h5>
         </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${manager.id}</li>
-        <li class="list-group-item">Email: ${manager.email}</li>
-        <li class="list-group-item">Office #:${manager.officeNumber}</li>
+        <li class="list-group-item">ID: Manager ID</li>
+        <li class="list-group-item">Email: Manager Email</li>
+        <li class="list-group-item">Office #:Manager Office </li>
       </ul>
-      </div>`
- 
- 
-    
-const createEngineer = (engineer) => 
-`
+      </div>
       <div class="card m-2 col-3">
       <div class="card-body">
-        <h5 class="card-title">${engineer.name}
+        <h5 class="card-title">sdf
         <i class="fas fa-glasses"></i>Engineer</h5>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${engineer.id}</li>
-        <li class="list-group-item">Email: ${engineer.email}</li>
-        <li class="list-group-item">Office #:${engineer.github}</li>
+        <li class="list-group-item">ID: undefined</li>
+        <li class="list-group-item">Email: undefined</li>
+        <li class="list-group-item">Office #:undefined</li>
       </ul>
-      </div>`
-
-    
-const createIntern = (intern) =>
-`
+      </div>
       <div class="card m-2 col-3">
       <div class="card-body">
-        <h5 class="card-title">${intern.name}
+        <h5 class="card-title">sdfsdf
         <i class="fas fa-user-graduate"></i>Intern</h5>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${intern.id}</li>
-        <li class="list-group-item">Email: ${intern.email}</li>
-        <li class="list-group-item">Office #:${intern.school}</li>
+        <li class="list-group-item">ID: sdf</li>
+        <li class="list-group-item">Email: sdf</li>
+        <li class="list-group-item">Office #:sdf</li>
       </ul>
-      </div>`
-        
-const endHTML = () =>
-`         
+      </div>         
         </div>
       </div>
     </div>
@@ -79,12 +63,4 @@ const endHTML = () =>
   
   </body>
   </html>
-  `
-
-module.exports = {
-  generateHTML,
-  endHTML,
-  createManager,
-  createIntern,
-  createEngineer,
-}
+  

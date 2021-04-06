@@ -1,33 +1,9 @@
-// list of my node packages 
-
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const path = require("path");
 
-// const OUTPUT_DIR = path.resolve(__dirname, "dist");
-// const outputPath =  path.join(OUTPUT_DIR, "index.html");
 const generateHTML = require('./utils/generateHTML.js');
 
 const html = './dist/index.html';
-
-function writeToFile(fileName, data){
-    fs.writeToFile(fileName, data, (err) =>
-    err ? console.error(err) : console.log('HTML Created')
-    );
-};
-
-
-function writeManager(html, response){
-    fs.appendFile(html, response)
-};
-
-function writeEngineer(html, response){
-    fs.appendFile(html, response)
-};
-
-function writeIntern(html, response){
-    fs.appendFile(html, response)
-};
 
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
@@ -35,7 +11,36 @@ const Intern = require("./lib/intern");
 
 const teamInfo = [];
 
-//complete create questions arrays for Manager, Engineer, Intern
+function writeTeamInfo(fileName, data){
+    fs.writeFile(fileName, data, (err) =>
+    err ? console.error(err) : console.log('')
+    );
+};
+
+function writeManager(fileName, data){
+    fs.appendFile(fileName, data, (err) => 
+    err ? console.error(err) : console.log('Manager Added!')
+    );
+};
+
+function writeEngineer(fileName, data){
+    fs.appendFile(fileName, data, (err) => 
+    err ? console.error(err) : console.log('Engineer Added!')
+    );
+};
+
+function writeIntern(fileName, data){
+    fs.appendFile(fileName, data, (err) => 
+    err ? console.error(err) : console.log('Intern Added!')
+    );
+};
+
+function appendEndHTML(fileName, data){
+    fs.appendFile(fileName, data, (err) => 
+    err ? console.error(err) : console.log('FInished Creating HTML')
+    );
+};
+
 const managerQuestions = [
     {
         type: "input",
@@ -68,17 +73,17 @@ const engineerQuestions = [
     {
         type: "input",
         message: "What is the Engineers ID?",
-        name: "EngineerId",
+        name: "engineerId",
     },
     {
         type: "input",
         message: "What is the Engineers Email Address?",
-        name: "EngineerEmail",
+        name: "engineerEmail",
     },
     {
         type: "input",
         message: "What is the Engineers GitHub name?",
-        name: "EngineerGithub",
+        name: "engineerGithub",
     },
 ];
 
@@ -108,13 +113,11 @@ const internQuestions = [
 function managerAnswers(){
     inquirer.prompt(managerQuestions).then(data => {
         const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);
-        // writeManager(html, generateHTML.createManager(manager))
-        teamInfo.push(manager);
-        generateHTML.generateHTML(teamInfo);
+        writeManager(html, generateHTML.createManager(manager))
         console.log(teamInfo);
     nextEmployee();
     })
-}
+};
 
 const nextEmployee = () => {
     inquirer.prompt([
@@ -131,17 +134,15 @@ const nextEmployee = () => {
         } else if (role === "Intern") {
             internAnswers();
         } else if (role === "I am finished.") {
-            appendEnd(html, generateHTML.endHTML(response))
-        }
-    })
-};
+            appendEndHTML(html, generateHTML.endHTML());  
+        }    
+});
+}
 
 function engineerAnswers(){
     inquirer.prompt(engineerQuestions).then(data => {
         const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
-        // writeEngineer(html, generateHTML.createEngineer(engineer))
-        teamInfo.push(engineer);
-        generateHTML.generateHTML(teamInfo);
+        writeEngineer(html, generateHTML.createEngineer(engineer))
         console.log(teamInfo);
     
     nextEmployee();
@@ -152,20 +153,15 @@ function engineerAnswers(){
 function internAnswers(){
     inquirer.prompt(internQuestions).then(data => {
         const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
-        // writeIntern(html, generateHTML.createIntern(intern))
-        teamInfo.push(intern);
-        generateHTML.generateHTML(teamInfo);
+        writeIntern(html, generateHTML.createIntern(intern))
         console.log(teamInfo);
     nextEmployee();
     })
 };
  
+const init = () => {
+    writeTeamInfo(html, generateHTML.generateHTML());
+    managerAnswers();
+}
 
-// const init = () => {
-//     fs.writeFileSync(generateHTML.generateHTML(teamInfo)),  (err) =>
-//     err ? console.error(err) : console.log('HTML Created')
-//     managerAnswers();
-// };
-
-// init();
-managerAnswers();
+init();
