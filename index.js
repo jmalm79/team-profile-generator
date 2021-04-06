@@ -2,15 +2,13 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
-const path = require("path");
+// const path = require("path");
 
-const OUTPUT_DIR = path.resolve(__dirname, "dist");
-const outputPath =  path.join(OUTPUT_DIR, "index.html");
+// const OUTPUT_DIR = path.resolve(__dirname, "dist");
+// const outputPath =  path.join(OUTPUT_DIR, "index.html");
 const generateHTML = require('./utils/generateHTML.js');
 
 const html = './dist/index.html';
-
-
 
 function writeToFile(fileName, data){
     fs.writeToFile(fileName, data, (err) =>
@@ -110,9 +108,9 @@ const internQuestions = [
 function managerAnswers(){
     inquirer.prompt(managerQuestions).then(data => {
         const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);
-        writeManager(html, generateHTML.createManager(manager))
-        // teamInfo.push(manager);
-        // console.log(manager);
+        // writeManager(html, generateHTML.createManager(manager))
+        teamInfo.push(manager);
+        generateHTML.generateHTML(teamInfo);
         console.log(teamInfo);
     nextEmployee();
     })
@@ -141,8 +139,9 @@ const nextEmployee = () => {
 function engineerAnswers(){
     inquirer.prompt(engineerQuestions).then(data => {
         const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
-        writeEngineer(html, generateHTML.createEngineer(engineer))
-        // teamInfo.push(engineer);
+        // writeEngineer(html, generateHTML.createEngineer(engineer))
+        teamInfo.push(engineer);
+        generateHTML.generateHTML(teamInfo);
         console.log(teamInfo);
     
     nextEmployee();
@@ -153,22 +152,20 @@ function engineerAnswers(){
 function internAnswers(){
     inquirer.prompt(internQuestions).then(data => {
         const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
-        writeIntern(html, generateHTML.createIntern(intern))
-        // teamInfo.push(intern);
+        // writeIntern(html, generateHTML.createIntern(intern))
+        teamInfo.push(intern);
+        generateHTML.generateHTML(teamInfo);
         console.log(teamInfo);
     nextEmployee();
     })
 };
  
 
-const init = () => {
-    fs.writeFileSync(outputPath, JSON.stringify(generateHTML(teamInfo)),  (err) =>
-    err ? console.error(err) : console.log('HTML Created')
-    );
-    managerAnswers();
-};
+// const init = () => {
+//     fs.writeFileSync(generateHTML.generateHTML(teamInfo)),  (err) =>
+//     err ? console.error(err) : console.log('HTML Created')
+//     managerAnswers();
+// };
 
-init();
-
-
-
+// init();
+managerAnswers();
