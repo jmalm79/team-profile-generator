@@ -1,4 +1,4 @@
-const Intern = require('../lib/manager.js');
+const Manager = require('../lib/manager.js');
 
 describe('Manger Test', () => {
     describe(`getofficeNumber`, () => {
