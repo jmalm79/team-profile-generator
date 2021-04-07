@@ -45,6 +45,8 @@ Please contact me with any questions about this project.
 
 My GitHub URL is [https://github.com/jmalm79](https://github.com/jmalm79)
 
+Walkthrough Video URL is [https://drive.google.com/file/d/1ifS0RXfDluuY0v2WQsJsXK0lkc5Np5az/view](https://drive.google.com/file/d/1ifS0RXfDluuY0v2WQsJsXK0lkc5Np5az/view)
+
 Email: jmalm79@gmail.com
 
 ![ScreenShot of this.](images/projectScreenShot.jpg)
