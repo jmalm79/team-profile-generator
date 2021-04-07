@@ -1,0 +1,26 @@
+h1 {
+    background-color: #333333;
+    color: #fff;
+    text-align: center;
+    font-family: cursive;
+}
+
+body{
+    background-color: #e0e0e0;
+}
+
+.manager{
+    background-color: #474747;
+    color: #fff;
+}
+
+.engineer{
+    background-color:#858585;
+    color: #fff;
+}
+
+
+.intern{
+    background-color: #b8b8b8;
+    color: #fff;
+}
