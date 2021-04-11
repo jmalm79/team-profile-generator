@@ -37,7 +37,7 @@ function writeIntern(fileName, data){
 
 function appendEndHTML(fileName, data){
     fs.appendFile(fileName, data, (err) => 
-    err ? console.error(err) : console.log('FInished Creating HTML')
+    err ? console.error(err) : console.log('Finished Creating HTML')
     );
 };
 
